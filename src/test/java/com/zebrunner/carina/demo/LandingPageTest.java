@@ -2,6 +2,9 @@ package com.zebrunner.carina.demo;
 
 import com.zebrunner.carina.core.AbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import com.zebrunner.carina.core.registrar.tag.Priority;
+import com.zebrunner.carina.core.registrar.tag.TestPriority;
+import com.zebrunner.carina.core.registrar.tag.TestTag;
 import com.zebrunner.carina.demo.gui.components.workwave.ContactForm;
 import com.zebrunner.carina.demo.gui.pages.desktop.LandingPage;
 import org.testng.annotations.Test;
@@ -10,7 +13,10 @@ import org.testng.asserts.SoftAssert;
 public class LandingPageTest extends AbstractTest {
 
     @Test
-    @MethodOwner(owner = "qpsdemo")
+    @TestPriority(Priority.P3)
+    @TestTag(name = "feature", value = "landing")
+    @TestTag(name = "link", value = "https://www.workwave.com")
+    @MethodOwner(owner = "brutskov")
     public void verifyContactFormTest() {
         LandingPage landingPage = new LandingPage(getDriver());
         landingPage.open();
@@ -48,7 +54,10 @@ public class LandingPageTest extends AbstractTest {
     }
 
     @Test
-    @MethodOwner(owner = "qpsdemo")
+    @TestPriority(Priority.P2)
+    @TestTag(name = "feature", value = "landing")
+    @TestTag(name = "link", value = "https://www.workwave.com")
+    @MethodOwner(owner = "brutskov")
     public void verifyContactFormFailureTest() {
         LandingPage landingPage = new LandingPage(getDriver());
         landingPage.open();
